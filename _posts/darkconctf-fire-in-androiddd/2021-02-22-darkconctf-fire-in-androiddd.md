@@ -14,7 +14,7 @@ tl;dr: Reverse the native library to get magic_function which generates catalan 
 On running the app there is just some text and nothing else.
 
 {:refdef: style="text-align: center;"}
-![My Image]({{ site.baseimg }}app.png){: width="250" }
+![My Image]({{ site.baseimg }}/assets/img/fire.png){: width="250" }
 {: refdef}
 
 On reversing the apk we have some java files so following the code of `MyReceiver.java` we see that its actually waiting for an intent with argument as flag and is later forwarded to the `loader` class (AsyncTask) which does the checking between the intent's argument and `magic function from native library`, if the checking is correct then it says correct flag if not then wrong flag.
