@@ -14,7 +14,7 @@ tl;dr: Just run adb logcat for the flag.
 On running the app this is the UI which only have input text but doesnt do anything other than the dancing submit button xD
 
 {:refdef: style="text-align: center;"}
-![My Image]({{ site.baseimg }}app.png){: width="250" }
+![My Image]({{ site.baseimg }}assets/img/app.png){: width="250" }
 {: refdef}
 
 So on reversing the apk we get some java files by following the source code for flag checking in MainActivity.java we can see that it is checking the input with YEET variable which from whyAmIHere class so following the whyAmIHere file we get that the flag is actually fetched from firestore (kinda of db in firebase) and is forwarded to Log.d() which is typical logger in android with TAG as TypicalLogcat.
