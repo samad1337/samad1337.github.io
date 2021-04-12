@@ -1,0 +1,89 @@
+<h1 class="author-name">Let’s start a conversation.</h1>
+
+<script type="text/javascript">var submitted=!1;</script>
+<div class="contact-form">
+
+<style>
+.contact-form {
+    position: relative
+}
+
+.contact-form input,.contact-form select {
+    font-family: Roboto, sans-serif;
+    box-sizing: border-box;
+    margin: 8px 0;
+    border: 0;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    color: #434648;
+    -webkit-appearance: none;
+    font-size: 16px;
+    background-color: rgba(128,128,128,0.1);
+    border: 1px solid rgba(128,128,128,0.1);
+}
+
+.contact-form input::-webkit-input-placeholder,.contact-form select::-webkit-input-placeholder {
+    color: #808080
+}
+
+.contact-form input::-webkit-search-decoration,.contact-form input::-webkit-search-results-decoration,.contact-form select::-webkit-search-decoration,.contact-form select::-webkit-search-results-decoration {
+    display: none
+}
+
+.contact-form input[type=submit] {
+    font-family: Roboto, sans-serif;
+    font-size: 18px;
+    width: 100%;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer
+}
+
+.contact-form input[type=submit]:hover {
+    background-color: #45a049
+}
+
+.contact-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    outline: none;
+    margin: 8px 0;
+    border-radius: 5px;
+    padding: 12px 20px;
+    color: #434648;
+    -webkit-appearance: none;
+    font-size: 16px;
+    background-color: rgba(128,128,128,0.1);
+    border: 1px solid rgba(128,128,128,0.1)
+}
+
+.contact-form textarea::-webkit-input-placeholder {
+    color: #808080
+}
+
+.contact-form textarea::-webkit-search-decoration,.contact-form textarea::-webkit-search-results-decoration {
+    display: none
+}
+</style>
+
+<iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted)  {window.location='{{site.url}}/thankyou/';}"></iframe>
+
+<form action="" method="post" target="hidden_iframe"
+onsubmit="submitted=!0;">
+    <span><input name="" type="text" placeholder="name." /></span>
+    <br>
+    <input name="" type="email" placeholder="email."/>
+    <br>
+    <textarea rows="5" name="" placeholder="message."></textarea>
+    <br>
+    <input type="submit" value="send." />
+
+</form>
+</div>
