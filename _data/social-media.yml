@@ -1,0 +1,29 @@
+email:
+  id: 'nirajssingh18@gmail.com'
+  href: 'mailto:'
+  title: 'Email'
+  fa-icon: 'fa-envelope'
+
+twitter:
+  id: 'karma9874'
+  href: 'https://twitter.com/'
+  title: 'Twitter'
+  fa-icon: 'fa-twitter'
+
+github:
+  id: 'karma9874'
+  href: 'https://github.com/'
+  title: 'GitHub'
+  fa-icon: 'fa-github'
+
+linkedin:
+  id: 'karma9874'
+  href: 'https://github.com/in/'
+  title: 'LinkedIn'
+  fa-icon: 'fa-linkedin'
+
+discord:
+  id: 'karma#8364'
+  href: 'https://discord.com/users/'
+  title: 'discord'
+  fa-icon: 'fa-discord'

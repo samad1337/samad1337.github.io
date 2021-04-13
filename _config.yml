@@ -1,7 +1,7 @@
 # Site settings
-title: Hello # site title
+title: Neeraj Singh # site title
 description: >- # site description
-  Security Enthusiastic from India, who enjoys hacking, playing CTF and pwning machine on HTB/THM.
+  Security Enthusiastic from India, who enjoys hacking, playing CTF and pwning machines.
 lang: en-US # default lang
 timezone: Asia/Kolkata # set your timezone
 image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
@@ -12,7 +12,7 @@ mode: dark # default theme "dark" | "light"
 author:
   name: Neeraj Singh # author name
   bio: >- # tell to the world
-    Security Enthusiastic from India, who enjoys hacking, playing CTF and pwning machine on HTB/THM.
+    Security Enthusiastic from India, who enjoys hacking, playing CTF and pwning machines.
   username: karma9874 # general username
   github: karma9874 # github username
   twitter: karma9874 # twitter username
