@@ -1,4 +1,4 @@
-# Klisé
+# Blog
 
 ```bash
 $ git clone https://github.com/karma9874/karma9874.github.io.git
