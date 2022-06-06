@@ -5,7 +5,8 @@ published: true
 adfkajsdflk
 sadfjasdf
 
-![My Image]({{ site.baseimg }}/assets/img/ezpz.png)
+![](https://miro.medium.com/max/589/1*V_l8yAtapsmpj5EQMjykAQ.png)
+
 
 
 
