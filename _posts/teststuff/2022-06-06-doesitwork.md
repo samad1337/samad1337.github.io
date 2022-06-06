@@ -5,7 +5,4 @@ published: true
 adfkajsdflk
 sadfjasdf
 
-![uploadstuff!]({{site.baseurl}}/_posts/teststuff/download.jpg)
-
-
-
+![uploadstuff!]({{site.baseurl}}/_posts/teststuff/images/download.jpg)
