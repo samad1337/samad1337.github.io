@@ -9,5 +9,3 @@ sadfjasdf
 sdafsadf
 ```
 
-
-![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fiy4mqC0tjzWIMmNGE98Q%2Fimage.png?alt=media)
