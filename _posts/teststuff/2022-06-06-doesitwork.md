@@ -5,7 +5,9 @@ published: true
 adfkajsdflk
 sadfjasdf
 
-![](https://miro.medium.com/max/589/1*V_l8yAtapsmpj5EQMjykAQ.png)
+{:refdef: style="text-align: center;"}
+![My Image]({{ site.baseimg }}/assets/img/ezpz.png){: width="250" }
+{: refdef}
 
 
 
