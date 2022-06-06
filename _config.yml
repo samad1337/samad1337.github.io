@@ -1,27 +1,23 @@
 # Site settings
 title: Hello # site title
 description: >- # site description
-  Security Enthusiastic from India, who enjoys hacking, playing CTF and pwning machines.
+  I spend an unhealthy amount of time on computers
 lang: en-US # default lang
 timezone: Asia/Kolkata # set your timezone
 image: assets/img/ogp.png # This image used for Open Graph more info https://ogp.me/
-repo: https://github.com/karma9874 # site repo [optional]
+repo:  # site repo [optional]
 mode: dark # default theme "dark" | "light"
 
 # Profile settings
 author:
-  name: Neeraj Singh # author name
+  name: Mohammad Abdussamad # author name
   bio: >- # tell to the world
-    Security Enthusiastic from India, who enjoys hacking, playing CTF and pwning machines.
+    I spend an unhealthy amount of time on computers
   username: karma9874 # general username
-  github: karma9874 # github username
-  twitter: karma9874 # twitter username
-  facebook: facebook_username # facebook username
-  email: nirajssingh18@gmail.com # email adress
   avatar: /assets/img/avatar.jpg # change with your own avatar
 
 # URL settings
-url: "https://karma9874.github.io/" #
+url: "" #
 baseurl:
 permalink: /:title/
 google_analytics: UA-194440888-1
