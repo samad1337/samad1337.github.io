@@ -5,5 +5,7 @@ published: true
 adfkajsdflk
 sadfjasdf
 
-![download.jpg]({{site.baseurl}}/download.jpg)
+![My Image]({{ site.baseimg }}/assets/img/ezpz.png)
+
+
 
