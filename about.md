@@ -6,5 +6,5 @@ excerpt:
 comments: false
 ---
 
-## Hey there, thanks for stopping by
-Pentester. Interests include Red teaming,Product Security & Appsec
+
+Pentester. Interests include Red teaming,Product Security & Appsec.
