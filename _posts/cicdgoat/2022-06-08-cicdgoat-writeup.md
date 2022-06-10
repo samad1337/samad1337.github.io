@@ -286,7 +286,9 @@ Note: We use the Non Verifying Verfication strategy to prevent any kind of key b
 
 Now save this agent and let it run . Immediately you should see our rouge SSH sever doing an MiTM attack and sniffing the credentials ! here the password is  flag8 ! 
 
-![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F6MwE9Xixk5iijNJL2wcd%2Fimage.png?alt=media&token=ba926940-c6e3-4a11-8211-2061dc148294)
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F6MwE9Xixk5iijNJL2wcd%2Fimage.png?alt=media&token=ba926940-c6e3-4a11-8211-2061dc148294) 
+
+
 
 
 
