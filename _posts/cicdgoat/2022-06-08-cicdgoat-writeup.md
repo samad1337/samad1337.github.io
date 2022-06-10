@@ -156,6 +156,7 @@ Login to jenkins and see the PR being processed click on the specific PR and che
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FbYvRnbPtYzltOWQyv4fx%2Fimage.png?alt=media&token=4efd6fc8-9fed-447e-ac99-b47dfb07c864)
 
 
+
 **Twiddledum** :   
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FUnSbi0fYviDUhYjCrfxS%2Fimage.png?alt=media&token=d3ad75a0-4fe3-43e4-8e51-c6bd83d5c507)
@@ -205,16 +206,6 @@ The reason we needed tags was because Jenkins pull the repo files from the tags 
 
 
 
-
-
-
-
-
-
-
-
-
-
 **Dodo** : 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FqlPNd2hb3v90GissZrTO%2Fimage.png?alt=media)
 
@@ -244,6 +235,17 @@ Trigger the pipeline again and this time checkov ignores all checks and the buil
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FtHzV3ZDpzxaSYqNoKanZ%2Fimage.png?alt=media&token=704825cc-0a29-4d50-a0c8-de13a480f273)
 
+I'll push the these changes in the remote repo and submit a pull request.PR not shown in the images  as it is similar to first challenge.  
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fqgvt1P8MAyVZLTiUgGgz%2Fimage.png?alt=media&token=61e0428a-6c0c-4342-a1eb-24ffd9cb7f55)
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Flvkn5qfyTxRKY1t3MyMH%2Fimage.png?alt=media&token=aa5403bb-6fc9-44f7-8507-b56b74e5115d)
+
+Login to jenkins and see the PR being processed click on the specific PR and check the console history
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FJumVHZURmyucxjAX42hX%2Fimage.png?alt=media&token=fdd88c15-276d-441a-9761-589056eade07)
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FbYvRnbPtYzltOWQyv4fx%2Fimage.png?alt=media&token=4efd6fc8-9fed-447e-ac99-b47dfb07c864)
 
 
 ### Hard Challenges 
@@ -285,6 +287,8 @@ Note: We use the Non Verifying Verfication strategy to prevent any kind of key b
 Now save this agent and let it run . Immediately you should see our rouge SSH sever doing an MiTM attack and sniffing the credentials ! here the password is  flag8 ! 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F6MwE9Xixk5iijNJL2wcd%2Fimage.png?alt=media&token=ba926940-c6e3-4a11-8211-2061dc148294)
+
+
 
 
 
