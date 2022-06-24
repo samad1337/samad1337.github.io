@@ -110,11 +110,11 @@ We'll clone the repository and have  a look at that . Essentially we have to hav
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F2k1R47q95GgZFBnbP3e2%2Fimage.png?alt=media&token=a3285072-f209-4bdb-adff-8e291e8ed555)
 
-There are 696 commits in this repo!! Looking at all of these will be a painful task  . There are automated tools which can find these sort of secrets, commits based or regular exps, special strings,etc . Gitleaks is one such tool. 
+There are 696 commits in this repo!! Looking at all of these will be a painful task . There are automated tools which can find these sort of secrets, commits based or regular exps, special strings,etc . Gitleaks is one such tool. 
 
 ```apt install gitleaks```
 
-We simply run this tool against the repo and it will do it's magic by looking into all kinds of previous commits and history and files and display any juicy info 
+We simply run this tool against the repo and it will do it's magic by looking into all kinds of previous commits and history,files and display any juicy info 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fn9eznVDV1JUGXYRmlLrS%2Fimage.png?alt=media&token=c330c116-2782-4e36-9d0b-967a5f0af533)
 
@@ -128,12 +128,12 @@ We are done with the easy challenges !!
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FDD5kbE0F7NGChppmMCwd%2Fimage.png?alt=media&token=eb49c908-6e07-4b10-a127-f995c2b6aa3d)
 
 This challenge we need to pull of a direct PPE attack on the Jenkins controller on the built-in node . 
-What does the above statement mean ?? This image taken from [Jenkins Documentation](https://www.jenkins.io/doc/book/managing/nodes/) gives some idea 
+What does the above statement mean ?? This image taken from [Jenkins Documentation](https://www.jenkins.io/doc/book/managing/nodes/) gives some idea.
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FRKAbjejs4HX0UHaz5AvB%2Fimage.png?alt=media&token=d194fdb7-1c8c-4ba7-8cdc-9b291b816df1)
 
-Essentially there are dedicated nodes where every build agents run. All build operations are done on a node independently without any relation to other nodes it is a concept called Controller Isolation . Jenkins Controller which is the  main component of the entire Jenkins application  is also on a  node which is the "built-in" node! It is not advised to run build ops on this node due to performance degradation. But this node has all the secrets and juicy information about the severs, etc. If we could run code on this "built-in" node then we have access to all the secrets!  Let's  see that in action ! 
-I'll clone the repo  checkout to a new branch and modify the Jenkinsfile as shown in the images below 
+Essentially there are dedicated nodes where every build agents run. All build operations are done on a node independently without any relation to other nodes it is a concept called Controller Isolation . _Jenkins Controller_ which is the  main component of the entire Jenkins application  is also on a  node which is the "built-in" node! It is not advised to run build ops on this node due to performance degradation. But this node has all the secrets and juicy information about the severs, etc. If we could run code on this "built-in" node then we have access to all the secrets!  Let's  see that in action ! 
+We'll clone the repo  checkout to a new branch and modify the Jenkinsfile as shown in the images below 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FxcKM4I68vAjDKIDQus4d%2Fimage.png?alt=media&token=2b0d0959-0c88-45cd-b0e1-ce5f635f8c3e)
 
@@ -141,7 +141,7 @@ We instruct Jenkins agent to use the "built in" node instead of "any" node and t
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fu7jqA6Nr8UZmrDiLcGHY%2Fimage.png?alt=media&token=581e3668-65b2-4ff6-b800-628c0629efa4)
 
-I'll push the these changes in the remote repo and submit a pull request.PR not shown in the images  as it is similar to first challenge. 
+I'll push the these changes in the remote repo and submit a pull request. PR not shown in the images  as it is similar to first challenge. 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fqgvt1P8MAyVZLTiUgGgz%2Fimage.png?alt=media&token=61e0428a-6c0c-4342-a1eb-24ffd9cb7f55)
 
@@ -164,7 +164,7 @@ Login to jenkins and see the PR being processed click on the specific PR and che
 
 The challenge does not hint at any kind of attack vector , we have to figure this out manually by looking into the twiddledum repository . 
 
-Let's clone it and see if we can add or modify files . As suspected we do not have write permissions on this repo .. but as we see in other challenges and it a common recurring theme that we can hijack other files which this repo uses . 
+Let's clone it and see if we can add or modify files . As suspected we do not have write permissions on this repo , but as we see in other challenges and it a common recurring theme that we can hijack other files which this repo uses . 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FilD16quRDeJz5imlwsip%2Fimage.png?alt=media&token=f6918225-17d0-4b4b-aa66-751c8b85a1b8)
 
@@ -183,9 +183,9 @@ We use the childprocess module within javascript to run code and make a curl req
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FTloFLcaRaI98qffiNp63%2Fimage.png?alt=media&token=c9b10272-35e2-413e-a712-2d6d22438d22)
 
-Initially I tried without the tags and could not get the flag .. As the the pipeline was pulling stuff from the tags and ignoring everything else. I will show why  later , make a note to add tags to the commit as shown above!
+_Initially I tried without the tags and could not get the flag .. As the the pipeline was pulling stuff from the tags and ignoring everything else. I will show why  later , make a note to add tags to the commit as shown above!_
 
-Okay!! Now we trigger the wonderland-twiddledum  pipeline, has to be done manually!. When the pipeline is built it will fetch  JavaScript the twiddledee repository and as a result execute our malicous js code in the index.js file and make a request to our server with the flag6!!
+Okay!! Now we trigger the wonderland-twiddledum  pipeline manually!. When the pipeline is built it will fetch  JavaScript from the twiddledee repository and as a result execute our malicous js code in the index.js file and make a request to our server with the flag6!!
 Login to jenkins and click on the wonderland-twiddledum  pipeline and click "BuildNow". After a few seconds we see Jenkins making a request to our server with the flag . 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FCBbF4PjoVtSHJcC3sS4z%2Fimage.png?alt=media&token=5baa5adc-f3b8-4f29-8bfc-de4b4d7cd5c9)
@@ -196,7 +196,7 @@ Login to jenkins and click on the wonderland-twiddledum  pipeline and click "Bui
 
 We have solved this challenge successfully! 
 
-The reason we needed tags was because Jenkins pull the repo files from the tags number  and nothing else as is evident in the console history 
+The reason we needed tags was because Jenkins pulls the repo files from the tags number and nothing else as is evident in the console history 
 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fe6aidlefEtLS7ww1xfuD%2Fimage.png?alt=media&token=4a5a1ae3-9fdd-45c2-ad82-10af0a81e80f)
@@ -204,7 +204,7 @@ The reason we needed tags was because Jenkins pull the repo files from the tags 
 **Dodo** : 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FqlPNd2hb3v90GissZrTO%2Fimage.png?alt=media)
 
-In this challenge we have to make a S3 bucket public without getting detected, meaning the  application has some sort of security measures to prevent the cloud environment from being tampered with. On a side note : we are emulating an aws environment using localstack, which is a program designed to help beginners to understand aws .
+In this challenge we have to make a S3 bucket public without getting detected, meaning the application has some sort of security measures to prevent the cloud environment from being tampered with. On a side note : We are emulating an aws environment using localstack, which is a program designed to help beginners to understand aws .
 
 Viewing the hints of this challenge we see that a program named **checkhov** is mentioned . Upon googling this program we see it detects and prevents tampering within cloud deployments. Let's confirm this by actually tampering with the **main.tf** file . This file has configuration of the bucket and it's associated ACL's.  
 I'll clone the repo ,modify the  main.tf file and push the changes. 
@@ -213,11 +213,11 @@ I'll clone the repo ,modify the  main.tf file and push the changes.
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FRzWfE3mu1MZwgAjcc82b%2Fimage.png?alt=media&token=8b49686d-3f7a-42c2-b8fa-ce370ed289c3)
 
-I'll trigger the pipeline manually and the build fails because checkov detected that the acl was tampered
+We'll trigger the pipeline manually and the build fails because checkov detected that the acl was tampered
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fbr9H7uf0HccLpJ75YSue%2Fimage.png?alt=media)
 
-I need to bypass this security check happening during the build time. There are multiple ways to do this . This [blogpost](https://bridgecrew.io/blog/checkov-iac-policy-severities-prioritize-skip-fail/) from the folks who made this program goes in detail about skipping checks . 
+We need to bypass this security check happening during the build time. There are multiple ways to do this . This [blogpost](https://bridgecrew.io/blog/checkov-iac-policy-severities-prioritize-skip-fail/) from the folks who made this program goes in detail about skipping checks . 
 
 Essentially we need to create  a **```.checkov.yaml```**  which tells  checkov to ignore all checks during the build
 I'll make that file and push it to the repo 
@@ -271,7 +271,7 @@ Downlaod this app image from [here](https://github.com/ssh-mitm/ssh-mitm/release
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FjpZMiGLSnjH8sQfKB07X%2Fimage.png?alt=media&token=b0703ae3-69e1-48df-8c98-2a586fd07431)
 
 
-Now login to the jenkins and configure an agent to perform an SSH operation using the Jenkins credentials as shown in the images below . 
+Now login to the jenkins as the user **knave** and configure an agent to perform an SSH operation using the Jenkins credentials as shown in the images below . 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FnLp4uLXxWlLxrJMZsi2q%2Fimage.png?alt=media&token=fc98112b-1348-4d00-b170-18843ba3e6bc)
 
@@ -337,7 +337,7 @@ The auto-merge code checks for three conditions that should be met:
 
 We need to bypass these checks . We will work on a new brach and submit a PR 
 
-Bypassing check1 
+**Bypassing check1** 
 
 Running the command ```wc -w Jenkinsfile``` which gives the number of words in the file;
 We notice that there are 148 words in this file before we make any changes
@@ -357,7 +357,7 @@ We have to get rid of 13 words from some other file to bypass the first check. W
 
 If everything is okay we should get bypass check1 
 
-Bypassing check2 & check3  
+**Bypassing check2 & check3**  
 
 This check can be easily bypassed  by just modifying the vesionnumber in the version file
 
@@ -367,11 +367,10 @@ Now let's push all these changes onto the remote repo and submit a PR. PR reques
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FxPVxbJzsB2CEnMsyHTZj%2Fimage.png?alt=media&token=78a858dd-c433-4aee-a4b2-4e46d2c4a943) 
 
-Looking at the Jenkins console build we notice that we were able to bypass check1 and check3 but check2 could not be bypassed. I strongly beleive that there is something wrong with the way this challenge is configured because the steps we followed should have worked according to the solutions as well ! 
+Looking at the Jenkins console build we notice that we were able to bypass check1 and check3 but check2 could not be bypassed. I strongly beleive that there is something wrong with the way this challenge is configured because the steps we followed should have worked.  according to the solutions as well ! 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F2WftJWomSVArcfgeCPxq%2Fimage.png?alt=media&token=6ef882ea-b44a-4411-bde4-e52c099b3de9) 
 
-Unforunately we could not get the final flag for this challenge ! 
 
 
 
