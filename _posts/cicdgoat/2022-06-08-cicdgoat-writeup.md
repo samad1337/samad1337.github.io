@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 ---
 Recently I came across this tweet and figured it would be a good starting point to learn some DevOps misconfigurations.  
 
@@ -24,21 +24,21 @@ Log into the CTF portal at [http://localhost:8000/challenges ](http://localhost:
 ## Easy challenges
 
 **White rabbit** :  
-![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FnonFCIY3YjoLJrr077lE%2Fimage.png?alt=media&token=ba14c7b0-033e-47e7-9684-68234c41a448)
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fqe6pov8zDVQ2Je3Kp5GB%2Fimage.png?alt=media&token=310445c0-8d1c-4e94-8f19-5e9a5e37f36e)
 
-As the challenge suggests the we need to get  flag1 located at the Jenkins Credential store by using the repository named Wonderland/white-rabbit hosted on gitea. To solve this challenge we need to perform a Direct PPE Attack. Essentially this attack can be performed when an attacker has access to a remote repository and can modify the  CI file either on the remote repo directly or by creating a new branch and submitting a Pull Request[PR] which the pipeline processes automatically . More details on this attack from the folks who created this challenge [here](https://www.cidersecurity.io/blog/research/ppe-poisoned-pipeline-execution/).
+As the challenge suggests the we need to get flag1 located at the Jenkins Credential store by using the repository named Wonderland/white-rabbit hosted on gitea. To solve this challenge  a Direct PPE Attack must be performed.  Essentially this attack can be performed when an attacker has access to a remote repository and can modify the  CI file either on the remote repo directly or by creating a new branch and submitting a Pull Request[PR] which the pipeline processes automatically . More details on this attack from the folks who created this challenge [here](https://www.cidersecurity.io/blog/research/ppe-poisoned-pipeline-execution/).
 
 
 Login to gitea and view the repo
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F6XAU3whyhnd6PrCHS7ge%2Fimage.png?alt=media&token=34a5cc81-2ca5-4e82-8c00-6d7ca5841d9b)
 
 
-Notice we are in  the one and only main branch .Now I'll clone this repo and work on the exploit on a new branch named whiterabbit-flag1 . 
+Notice we are in  the one and only main branch .Now we'll clone this repo and work on the exploit on a new branch named whiterabbit-flag1 . 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F0s3cK5zh7hjzV97k1ssq%2Fimage.png?alt=media&token=99c2922b-9dd3-435d-907b-c700a145a1b2)
 
-Let's modify the Jenkisfile   a to pull flag1 from the credential store. Essentially we use the withCredentials()  binding plugin which allows credentials to to bound to variable name; Now we create a new variable named flag1 and bind the credentialId to that . 
-The Jenkisfile should be modified like so :
+Let's modify the _Jenkisfile_  a to pull flag1 from the credential store. Essentially we use the _withCredentials()_  binding plugin which allows credentials to to bound to variable name; Now we create a new variable named _flag1_ and bind the credentialId to that . 
+The _Jenkisfile_ should be modified like so :
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FfssoUgS4d0hcL7CzmzwP%2Fimage.png?alt=media&token=baf71373-a7bf-4757-b0b8-64bcd87ec5c4)
 
@@ -70,18 +70,19 @@ Base64 decode the blob and we have our first flag
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FVTXBMk48MW1r810zRRlB%2Fimage.png?alt=media&token=2c1a5dea-59e9-4473-a952-da06dc24178a)
 
-In this challenge  we are hinted that the Jenkinsfile is protected and cannot be modified, so a DirectPPE attack is not possible. Let's confirm this ! 
+In this challenge we are hinted that the _Jenkinsfile_ is protected and cannot be modified, so a DirectPPE attack is not possible. Let's confirm this ! 
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F5qyubPCYxAb9k4CO1wtp%2Fimage.png?alt=media&token=91005e96-2f88-49cd-8987-96702fa4a286)
 
-We see that there are two repos for mad-hatter . One contains the Jenkinsfile and the other one has the  the code files. Let's try to clone the repo which has the Jenkinsfile and make changes to it  like we did in the previous challenge and see if it works!
+We see that there are two repos for mad-hatter . One contains the Jenkinsfile and the other one has  the code files. Let's try to clone the repo which has the Jenkinsfile and make changes to it  like we did in the previous challenge and see if it works!
 The modified Jenkinsfile is as shown below . ; We push these files into the remote repo and we get access denied !
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FCeE27fLf1NDIv7X7t7OR%2Fimage.png?alt=media&token=4a1bccb2-c52a-484a-af75-bbb0e951de7c)
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FzOXiBGxXn02fffv7JicY%2Fimage.png?alt=media&token=18867576-3220-45f1-8a5b-8235934c2a00)
 
-As suspected Direct PPE is not possible, but not all is lost ! Usually the CI files rely on other files to perform build operations . If we could hijack any of these "other" files then we can indirectly hack the pipeline without making changes to the CI file!! This ,in a nutshell, is what we call an Indirect PPE attack. Taking a look at the Jenkinsfile we can see that it relies on a make file which has the flag3 as a credential variable named passwordVariable. We can  edit this  make file as it is not write protected and in a different repository.
+As suspected Direct PPE is not possible, but not all is lost ! Usually the CI files rely on other files to perform build operations . If we could hijack any of these "other" files then we can indirectly hack the pipeline without making changes to the CI file!! This ,in a nutshell, is what we call an ```Indirect PPE```
+attack. Taking a look at the Jenkinsfile we can see that it relies on a ```make``` file which has the flag3 as a credential variable named _passwordVariable_. We can  edit this  make file as it is not write protected and in a different repository.
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FqyEXUCjTW9OcnkMzNpgO%2Fimage.png?alt=media&token=5ca4528e-4199-4f9f-88e5-aa19dd67a29b)
 
@@ -103,7 +104,7 @@ I won't be showing pull requests unless required from here on as they are simila
 
 ![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FYnTfrSQ29creLIhq0sFQ%2Fimage.png?alt=media&token=effe8df5-4aab-49b8-a727-70304bd397e3)
 
-The third easy and final challenge hints at the Wonderland/duchess repository and apparently we might find PyPi token if we dig around ! 
+The third easy and final challenge hints at the _Wonderland/duchess_ repository and apparently we might find PyPi token if we dig around ! 
 
 We'll clone the repository and have  a look at that . Essentially we have to have a look at the all the previous commits in this repo and check if any secrets are left bind which the developers forgot to purge. Let's do that ! 
 
@@ -321,10 +322,58 @@ Now we start a new a [json http server](https://github.com/typicode/json-server)
 
 Note : I was unclear what to do once the SSH public key was obtained ! . So I left this challenge unsolved as I was able to proceed furthur as the solutions didn't help me much either ! 
 
-**Mock turtle**  : 
+**Mock turtle**  :
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FoXNGIRtZ6CK5Ay6ZlL1n%2Fimage.png?alt=media&token=64f5759d-819b-43a0-b477-66b29abd15db)  
+
+This is the last and the final challenge in this CTF . Cloning the repo and reading the Jenkins file provides three important points about the pipeline configuration. 
+The auto-merge code checks for three conditions that should be met:
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FketmpUtWLr102Powv3wG%2Fimage.png?alt=media&token=32f5a819-67b3-42f8-ad53-fec2ae35b395)
+
+- No words are added in the pull request. When just the version is updated, one line (and word) is considered removed by the git diff check, and one word is added, so 0 words are added or removed in total.
+- Version structure is left the same.
+- Version file is changed.
+
+We need to bypass these checks . We will work on a new brach and submit a PR 
+
+Bypassing check1 
+
+Running the command ```wc -w Jenkinsfile``` which gives the number of words in the file;
+We notice that there are 148 words in this file before we make any changes
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FE19NDVj72NRdiylEcVCF%2Fimage.png?alt=media&token=403a4f5f-6d0c-477f-9ac2-ec7f22859545)
+
+Now modifying the Jenkinsfile to get our flag10 
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FKBTIBDGHT7Ub6OlSyHSL%2Fimage.png?alt=media&token=9e709531-cf7d-47da-9d03-25173fce7a97)
+
+The newly modified Jenkins file has now 161 words, meaning 13 more words were added
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FjxIXU7Qkub8UIHW4MxkB%2Fimage.png?alt=media&token=d44f9f31-e41b-4f3d-8fb6-726fc2f76919)
+
+We have to get rid of 13 words from some other file to bypass the first check. We will modify the ### README.md file and remove 13 words ! 
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FJ8rh56fjkhEq4IJTggPR%2Fimage.png?alt=media&token=7b1ece62-1c92-4f20-90b6-f4ac08fec6b5)
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FkULXJ8bXCFPgviA12T3C%2Fimage.png?alt=media&token=0526c3d0-dcd0-4f17-bbd0-4647aa6ea750)
+
+If everything is okay we should get bypass check1 
+
+Bypassing check2 & check3  
+
+This check can be easily bypassed  by just modifying the vesionnumber in the version file
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2Fm2NU45gIfccfGvnLRccX%2Fimage.png?alt=media&token=ad4e5b00-80fd-47d6-b5b2-65ab0449a275)
+
+Now let's push all these changes onto the remote repo and submit a PR. PR request is not shown as it same as the one done for previous challenges 
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2FxPVxbJzsB2CEnMsyHTZj%2Fimage.png?alt=media&token=78a858dd-c433-4aee-a4b2-4e46d2c4a943) 
+
+Looking at the Jenkins console build we notice that we were able to bypass check1 and check3 but check2 could not be bypassed. I strongly beleive that there is something wrong with the way this challenge is configured because the steps we followed should have worked according to the solutions as well ! 
+
+![](https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F0ozxUoEgqX8lSXt4wQpe%2Fuploads%2F2WftJWomSVArcfgeCPxq%2Fimage.png?alt=media&token=6ef882ea-b44a-4411-bde4-e52c099b3de9) 
+
+Unforunately we could not get the final flag for this challenge ! 
 
 
- 
 
 
 
