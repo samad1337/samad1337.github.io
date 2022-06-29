@@ -1,7 +1,7 @@
 # Blog
 
 ```bash
-$ git clone https://github.com/karma9874/karma9874.github.io.git
+$ git clone 
 $ cd jekyll-klise
 $ bundle install
 $ bundle exec jekyll serve
